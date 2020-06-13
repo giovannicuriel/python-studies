@@ -1,0 +1,295 @@
+  2           0 LOAD_CONST               0 (<code object formata_cpf_1 at 0x104e2b870, file "./PythonStudies/sample_functions/cpf_utils.py", line 2>)
+              2 LOAD_CONST               1 ('formata_cpf_1')
+              4 MAKE_FUNCTION            0
+              6 STORE_NAME               0 (formata_cpf_1)
+
+ 41           8 LOAD_CONST               2 (<code object formata_cpf_3 at 0x104e2b920, file "./PythonStudies/sample_functions/cpf_utils.py", line 41>)
+             10 LOAD_CONST               3 ('formata_cpf_3')
+             12 MAKE_FUNCTION            0
+             14 STORE_NAME               1 (formata_cpf_3)
+
+ 82          16 LOAD_CONST               4 (<code object formata_cpf_3 at 0x104e2bc90, file "./PythonStudies/sample_functions/cpf_utils.py", line 82>)
+             18 LOAD_CONST               3 ('formata_cpf_3')
+             20 MAKE_FUNCTION            0
+             22 STORE_NAME               1 (formata_cpf_3)
+
+100          24 LOAD_CONST               5 (<code object formata_cpf_4 at 0x104e2bea0, file "./PythonStudies/sample_functions/cpf_utils.py", line 100>)
+             26 LOAD_CONST               6 ('formata_cpf_4')
+             28 MAKE_FUNCTION            0
+             30 STORE_NAME               2 (formata_cpf_4)
+             32 LOAD_CONST               7 (None)
+             34 RETURN_VALUE
+
+Disassembly of <code object formata_cpf_1 at 0x104e2b870, file "./PythonStudies/sample_functions/cpf_utils.py", line 2>:
+ 18           0 LOAD_FAST                0 (cpf)
+              2 FORMAT_VALUE             0
+              4 STORE_FAST               1 (str_cpf)
+
+ 21           6 BUILD_LIST               0
+              8 STORE_FAST               2 (vec_cpf)
+
+ 24          10 LOAD_FAST                1 (str_cpf)
+             12 GET_ITER
+        >>   14 FOR_ITER                16 (to 32)
+             16 STORE_FAST               3 (c)
+
+ 25          18 LOAD_FAST                2 (vec_cpf)
+             20 LOAD_METHOD              0 (insert)
+             22 LOAD_CONST               1 (0)
+             24 LOAD_FAST                3 (c)
+             26 CALL_METHOD              2
+             28 POP_TOP
+             30 JUMP_ABSOLUTE           14
+
+ 28     >>   32 LOAD_GLOBAL              1 (range)
+             34 LOAD_CONST               2 (1)
+             36 LOAD_CONST               3 (11)
+             38 LOAD_GLOBAL              2 (len)
+             40 LOAD_FAST                2 (vec_cpf)
+             42 CALL_FUNCTION            1
+             44 BINARY_SUBTRACT
+             46 CALL_FUNCTION            2
+             48 GET_ITER
+        >>   50 FOR_ITER                14 (to 66)
+             52 STORE_FAST               4 (i)
+
+ 29          54 LOAD_FAST                2 (vec_cpf)
+             56 LOAD_METHOD              3 (append)
+             58 LOAD_CONST               4 ('0')
+             60 CALL_METHOD              1
+             62 POP_TOP
+             64 JUMP_ABSOLUTE           50
+
+ 32     >>   66 LOAD_CONST               5 ('')
+             68 LOAD_METHOD              4 (join)
+             70 LOAD_FAST                2 (vec_cpf)
+             72 LOAD_CONST               1 (0)
+             74 LOAD_CONST               6 (2)
+             76 BUILD_SLICE              2
+             78 BINARY_SUBSCR
+             80 CALL_METHOD              1
+             82 FORMAT_VALUE             0
+             84 LOAD_CONST               7 ('-')
+             86 LOAD_CONST               5 ('')
+             88 LOAD_METHOD              4 (join)
+             90 LOAD_FAST                2 (vec_cpf)
+             92 LOAD_CONST               6 (2)
+             94 LOAD_CONST               8 (5)
+             96 BUILD_SLICE              2
+             98 BINARY_SUBSCR
+            100 CALL_METHOD              1
+            102 FORMAT_VALUE             0
+            104 LOAD_CONST               9 ('.')
+            106 LOAD_CONST               5 ('')
+            108 LOAD_METHOD              4 (join)
+            110 LOAD_FAST                2 (vec_cpf)
+            112 LOAD_CONST               8 (5)
+            114 LOAD_CONST              10 (8)
+            116 BUILD_SLICE              2
+            118 BINARY_SUBSCR
+            120 CALL_METHOD              1
+            122 FORMAT_VALUE             0
+            124 LOAD_CONST               9 ('.')
+            126 LOAD_CONST               5 ('')
+            128 LOAD_METHOD              4 (join)
+            130 LOAD_FAST                2 (vec_cpf)
+            132 LOAD_CONST              10 (8)
+            134 LOAD_CONST               3 (11)
+            136 BUILD_SLICE              2
+            138 BINARY_SUBSCR
+            140 CALL_METHOD              1
+            142 FORMAT_VALUE             0
+            144 BUILD_STRING             7
+            146 STORE_FAST               5 (rev_formatted_cpf)
+
+ 35         148 LOAD_CONST               5 ('')
+            150 STORE_FAST               6 (formatted_cpf)
+
+ 36         152 LOAD_FAST                5 (rev_formatted_cpf)
+            154 GET_ITER
+        >>  156 FOR_ITER                12 (to 170)
+            158 STORE_FAST               3 (c)
+
+ 37         160 LOAD_FAST                3 (c)
+            162 LOAD_FAST                6 (formatted_cpf)
+            164 BINARY_ADD
+            166 STORE_FAST               6 (formatted_cpf)
+            168 JUMP_ABSOLUTE          156
+
+ 38     >>  170 LOAD_FAST                6 (formatted_cpf)
+            172 RETURN_VALUE
+
+Disassembly of <code object formata_cpf_3 at 0x104e2b920, file "./PythonStudies/sample_functions/cpf_utils.py", line 41>:
+ 59           0 LOAD_FAST                0 (cpf)
+              2 STORE_FAST               1 (cache)
+
+ 62           4 LOAD_CONST               1 ('0')
+              6 LOAD_CONST               2 ('1')
+              8 LOAD_CONST               3 ('2')
+             10 LOAD_CONST               4 ('3')
+             12 LOAD_CONST               5 ('4')
+             14 LOAD_CONST               6 ('5')
+             16 LOAD_CONST               7 ('6')
+             18 LOAD_CONST               8 ('7')
+             20 LOAD_CONST               9 ('8')
+             22 LOAD_CONST              10 ('9')
+             24 BUILD_LIST              10
+             26 STORE_FAST               2 (digits)
+
+ 65          28 LOAD_CONST              11 ('')
+             30 LOAD_CONST              11 ('')
+             32 LOAD_CONST              11 ('')
+             34 LOAD_CONST              12 ('.')
+             36 LOAD_CONST              11 ('')
+             38 LOAD_CONST              11 ('')
+             40 LOAD_CONST              11 ('')
+             42 LOAD_CONST              12 ('.')
+             44 LOAD_CONST              11 ('')
+             46 LOAD_CONST              11 ('')
+             48 LOAD_CONST              11 ('')
+             50 LOAD_CONST              13 ('-')
+             52 LOAD_CONST              11 ('')
+             54 LOAD_CONST              11 ('')
+             56 BUILD_LIST              14
+             58 STORE_FAST               3 (formatted_cpf)
+
+ 67          60 LOAD_CONST              14 (13)
+             62 STORE_FAST               4 (ix)
+
+ 68     >>   64 LOAD_FAST                4 (ix)
+             66 LOAD_CONST              15 (0)
+             68 COMPARE_OP               5 (>=)
+             70 POP_JUMP_IF_FALSE      146
+
+ 69          72 LOAD_FAST                1 (cache)
+             74 LOAD_CONST              16 (10)
+             76 BINARY_MODULO
+             78 STORE_FAST               5 (remainder)
+
+ 70          80 LOAD_FAST                1 (cache)
+             82 LOAD_FAST                5 (remainder)
+             84 BINARY_SUBTRACT
+             86 LOAD_CONST              16 (10)
+             88 BINARY_TRUE_DIVIDE
+             90 STORE_FAST               1 (cache)
+
+ 73          92 LOAD_FAST                2 (digits)
+             94 LOAD_FAST                5 (remainder)
+             96 BINARY_SUBSCR
+             98 LOAD_FAST                3 (formatted_cpf)
+            100 LOAD_FAST                4 (ix)
+            102 STORE_SUBSCR
+
+ 74         104 LOAD_FAST                4 (ix)
+            106 LOAD_CONST              17 (1)
+            108 INPLACE_SUBTRACT
+            110 STORE_FAST               4 (ix)
+
+ 76         112 LOAD_FAST                4 (ix)
+            114 LOAD_CONST              18 (11)
+            116 COMPARE_OP               2 (==)
+            118 POP_JUMP_IF_TRUE       136
+            120 LOAD_FAST                4 (ix)
+            122 LOAD_CONST              19 (7)
+            124 COMPARE_OP               2 (==)
+            126 POP_JUMP_IF_TRUE       136
+            128 LOAD_FAST                4 (ix)
+            130 LOAD_CONST              20 (3)
+            132 COMPARE_OP               2 (==)
+            134 POP_JUMP_IF_FALSE       64
+
+ 77     >>  136 LOAD_FAST                4 (ix)
+            138 LOAD_CONST              17 (1)
+            140 INPLACE_SUBTRACT
+            142 STORE_FAST               4 (ix)
+            144 JUMP_ABSOLUTE           64
+
+ 79     >>  146 LOAD_CONST              11 ('')
+            148 LOAD_METHOD              0 (join)
+            150 LOAD_FAST                3 (formatted_cpf)
+            152 CALL_METHOD              1
+            154 RETURN_VALUE
+
+Disassembly of <code object formata_cpf_3 at 0x104e2bc90, file "./PythonStudies/sample_functions/cpf_utils.py", line 82>:
+ 95           0 LOAD_FAST                0 (cpf)
+              2 FORMAT_VALUE             0
+              4 STORE_FAST               1 (str_cpf)
+
+ 96           6 LOAD_CONST               1 ('0')
+              8 LOAD_CONST               2 (11)
+             10 LOAD_GLOBAL              0 (len)
+             12 LOAD_FAST                1 (str_cpf)
+             14 CALL_FUNCTION            1
+             16 BINARY_SUBTRACT
+             18 BINARY_MULTIPLY
+             20 LOAD_FAST                1 (str_cpf)
+             22 BINARY_ADD
+             24 STORE_FAST               1 (str_cpf)
+
+ 97          26 LOAD_FAST                1 (str_cpf)
+             28 LOAD_CONST               3 (0)
+             30 LOAD_CONST               4 (3)
+             32 BUILD_SLICE              2
+             34 BINARY_SUBSCR
+             36 FORMAT_VALUE             0
+             38 LOAD_CONST               5 ('.')
+             40 LOAD_FAST                1 (str_cpf)
+             42 LOAD_CONST               4 (3)
+             44 LOAD_CONST               6 (6)
+             46 BUILD_SLICE              2
+             48 BINARY_SUBSCR
+             50 FORMAT_VALUE             0
+             52 LOAD_CONST               5 ('.')
+             54 LOAD_FAST                1 (str_cpf)
+             56 LOAD_CONST               6 (6)
+             58 LOAD_CONST               7 (9)
+             60 BUILD_SLICE              2
+             62 BINARY_SUBSCR
+             64 FORMAT_VALUE             0
+             66 LOAD_CONST               8 ('-')
+             68 LOAD_FAST                1 (str_cpf)
+             70 LOAD_CONST               7 (9)
+             72 LOAD_CONST               9 (None)
+             74 BUILD_SLICE              2
+             76 BINARY_SUBSCR
+             78 FORMAT_VALUE             0
+             80 BUILD_STRING             7
+             82 RETURN_VALUE
+
+Disassembly of <code object formata_cpf_4 at 0x104e2bea0, file "./PythonStudies/sample_functions/cpf_utils.py", line 100>:
+114           0 LOAD_CONST               1 ('00000000000')
+              2 FORMAT_VALUE             0
+              4 LOAD_FAST                0 (cpf)
+              6 FORMAT_VALUE             0
+              8 BUILD_STRING             2
+             10 STORE_FAST               1 (str_cpf)
+
+117          12 LOAD_FAST                1 (str_cpf)
+             14 LOAD_CONST               2 (-11)
+             16 LOAD_CONST               3 (-8)
+             18 BUILD_SLICE              2
+             20 BINARY_SUBSCR
+             22 FORMAT_VALUE             0
+             24 LOAD_CONST               4 ('.')
+             26 LOAD_FAST                1 (str_cpf)
+             28 LOAD_CONST               3 (-8)
+             30 LOAD_CONST               5 (-5)
+             32 BUILD_SLICE              2
+             34 BINARY_SUBSCR
+             36 FORMAT_VALUE             0
+             38 LOAD_CONST               4 ('.')
+             40 LOAD_FAST                1 (str_cpf)
+             42 LOAD_CONST               5 (-5)
+             44 LOAD_CONST               6 (-2)
+             46 BUILD_SLICE              2
+             48 BINARY_SUBSCR
+             50 FORMAT_VALUE             0
+             52 LOAD_CONST               7 ('-')
+             54 LOAD_FAST                1 (str_cpf)
+             56 LOAD_CONST               6 (-2)
+             58 LOAD_CONST               8 (None)
+             60 BUILD_SLICE              2
+             62 BINARY_SUBSCR
+             64 FORMAT_VALUE             0
+             66 BUILD_STRING             7
+             68 RETURN_VALUE
