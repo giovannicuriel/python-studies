@@ -38,7 +38,7 @@ def formata_cpf_1(cpf):
     return formatted_cpf
 
 
-def formata_cpf_3(cpf):
+def formata_cpf_2(cpf):
     """ Retorna o CPF formatado, com pontos e um traço
 
     Esta implementação tem uma abordagem diferente: ao invés de se operar em
@@ -66,7 +66,7 @@ def formata_cpf_3(cpf):
 
     ix = 13
     while (ix >= 0):
-        remainder = cache % 10
+        remainder = int(cache % 10)
         cache = (cache - remainder) / 10
         # Percorre o vetor na ordem inversa (algarismo menos significativo)
         # para o mais significativo.
@@ -115,3 +115,63 @@ def formata_cpf_4(cpf):
 
     # Repare que todos os índices são negativos.
     return f"{str_cpf[-11:-8]}.{str_cpf[-8:-5]}.{str_cpf[-5:-2]}-{str_cpf[-2:]}"
+
+
+def formata_cpf_5(cpf):
+    """ Retorna o CPF formatado, com pontos e um traço
+
+    Esta implementação é bastante semelhante à anterior, com a diferença que
+    a transformação do CPF para string não considera quantos zeros estão
+    faltando. Basta apenas adicionar todos os onze e, quando a string formatada
+    for gerada, os índices serem referentes ao fim. Assim não é necessário
+    calcular o tamanho da string.
+
+    Parâmetros
+    ----------
+    cpf : number
+          O CPF a ser formatado
+    """
+    str_cpf = '{}{}'.format('0' * 11, cpf)
+
+    # Repare que todos os índices são negativos.
+    return '{}.{}.{}-{}'.format(str_cpf[-11:-8], str_cpf[-8:-5], str_cpf[-5:-2], str_cpf[-2:])
+
+def formata_cpf_6(cpf):
+    """ Retorna o CPF formatado, com pontos e um traço
+
+    Esta implementação é bastante semelhante à anterior, com a diferença que
+    a transformação do CPF para string não considera quantos zeros estão
+    faltando. Basta apenas adicionar todos os onze e, quando a string formatada
+    for gerada, os índices serem referentes ao fim. Assim não é necessário
+    calcular o tamanho da string.
+
+    Parâmetros
+    ----------
+    cpf : number
+          O CPF a ser formatado
+    """
+    str_cpf = '%s%s' % ('0' * 11, cpf)
+
+    # Repare que todos os índices são negativos.
+    return '%s.%s.%s-%s' % (str_cpf[-11:-8], str_cpf[-8:-5], str_cpf[-5:-2], str_cpf[-2:])
+
+
+def formata_cpf_7(cpf):
+    """ Retorna o CPF formatado, com pontos e um traço
+
+    Esta implementação é bastante semelhante à anterior, com a diferença que
+    a transformação do CPF para string não considera quantos zeros estão
+    faltando. Basta apenas adicionar todos os onze e, quando a string formatada
+    for gerada, os índices serem referentes ao fim. Assim não é necessário
+    calcular o tamanho da string.
+
+    Parâmetros
+    ----------
+    cpf : number
+          O CPF a ser formatado
+    """
+    str_cpf = ''.join(['0' * 11, str(cpf)])
+    
+    # Repare que todos os índices são negativos.
+    return '-'.join( [ '.'.join([str_cpf[-11:-8], str_cpf[-8:-5], str_cpf[-5:-2]])  , str_cpf[-2:]]   )
+
