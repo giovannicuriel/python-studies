@@ -1,6 +1,6 @@
 import cProfile, pstats, io
 from pstats import SortKey
-from PythonStudies.sample_functions import cpf_utils
+import cpf_utils
 import itertools
 import sys
 
