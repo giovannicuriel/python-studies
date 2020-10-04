@@ -43,4 +43,3 @@ encaminhados para uma fila de, ahm, falhas - algo como uma DLQ do SQS.
 ## Como executar
 
 Como ainda não há código, não há o que executar.
-
