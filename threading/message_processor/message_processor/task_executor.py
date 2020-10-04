@@ -1,39 +1,41 @@
-from collections import namedtupe
-"""
-Este executor é baseado na implementação do scheduler do Python. Coloquei aqui
-para fins de exemplo de uso do mutex.
+from collections import namedtuple
+import heapq
+from time import sleep
+from time import monotonic as _time
 
+"""
+Este executor é uma versão reduzida do código do scheduler do Python. Coloquei
+aqui para exemplificar o uso do mutex (a ser feito ainda)
+
+O código original é este
 https://github.com/python/cpython/blob/3.8/Lib/sched.py
 """
 
 
 class Task(namedtuple('Task', ['time', 'action'])):
-
+  def __eq__(self, o): return self.time == o.time
+  def __lt__(self, o): return self.time <  o.time
+  def __le__(self, o): return self.time <= o.time
+  def __gt__(self, o): return self.time >  o.time
+  def __ge__(self, o): return self.time >= o.time
 
 class TaskExecutor:
-  type_table: List[TimeEntry]
+  _time_table = []
   
   def __init__(self):
-    self.time_table = []
+    pass
 
   def run(self):
-    while self.time_table:
-      self.time_table[0].diff_time -= .1
-      [ fn() for fn in self.time_table[0].fns if self.time_table[0].diff_time < 0 ]
-
+    while self._time_table:
+      time, fn = self._time_table[0]
+      now = _time()
+      if time > now:
+        sleep(time - now)
+      else:
+        heapq.heappop(self._time_table)
+        fn()
+      
         
   def add_task(self, timeout, fn):
-    ix = 0
-    for time_entry in self.time_table:
-      ix += 1
-      if (timeout - time_entry.diff_time) < 0:
-        # Found where
-        new_time_entry = TimeEntry(fn=fn, diff_time=timeout)
-        self.time_table.insert(ix, new_time_entry)
-        break
-      else:
-        timeout -= time_entry.diff_time
-
-
-executor = TaskExecutor()
-executor.add_task()
+    task = Task(timeout, fn)
+    heapq.heappush(self._time_table, task)
