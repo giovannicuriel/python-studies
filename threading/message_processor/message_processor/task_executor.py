@@ -30,6 +30,7 @@ class TaskExecutor:
       time, fn = self._time_table[0]
       now = _time()
       if time > now:
+        print(f'Sleeping {time-now} until next run')
         sleep(time - now)
       else:
         heapq.heappop(self._time_table)
@@ -37,5 +38,5 @@ class TaskExecutor:
       
         
   def add_task(self, timeout, fn):
-    task = Task(timeout, fn)
+    task = Task(_time() + timeout, fn)
     heapq.heappush(self._time_table, task)
