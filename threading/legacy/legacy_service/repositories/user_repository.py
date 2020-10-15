@@ -25,8 +25,10 @@ def build_user_repository(random, current_time):
       return user.user_id
 
     def get_user(self, user_id):
-      user = self.user_map[user_id]
-      user.process_status = ['ok', 'error'][random(0,1)] if (user.process_status == 'not-ready') and (self.metadata[user_id]['ttl'] < current_time()) else user.process_status
-      return user
+      if user_id in self.user_map:
+        user = self.user_map[user_id]
+        user.process_status = ['ok', 'error'][random(0,1)] if (user.process_status == 'not-ready') and (self.metadata[user_id]['ttl'] < current_time()) else user.process_status
+        return user
+      return None
 
   return UserRepository

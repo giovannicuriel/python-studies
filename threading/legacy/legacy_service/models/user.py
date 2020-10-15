@@ -14,5 +14,5 @@ class User:
     self.user_id = kwargs.get('user_id', '')
     self.process_status = kwargs.get('process_status', 'none')
 
-userSchema = UserSchema()
-usersSchema = UserSchema(many=True)
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
