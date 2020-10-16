@@ -37,9 +37,9 @@ Cool! Server is up, let's poke it with some sample requests:
 
 ```bash
 $ curl 0:3000/registration -H 'content-type:application/json' -d '{"name": "John Doe", "age": 30}' -X POST
-{"message":"ok","userid":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}
+{"message":"ok","result":{"userid":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
 $ curl 0:3000/registration/17b0030e-9fd8-406a-98ca-0cd5e21c4348
-{"message":"ok","user":{"age":30,"name":"John Doe","process_status":"not-ready","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
+{"message":"ok","result":{"age":30,"name":"John Doe","process_status":"not-ready","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
 $ curl 0:3000/registration/17b0030e-9fd8-406a-98ca-0cd5e21c4348
-{"message":"ok","user":{"age":30,"name":"John Doe","process_status":"ok","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
+{"message":"ok","result":{"age":30,"name":"John Doe","process_status":"ok","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
 ```
