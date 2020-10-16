@@ -1,3 +1,4 @@
+"""Send a message to the default exchange for this app"""
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -12,4 +13,3 @@ channel.basic_publish(exchange='user-registrations',
 print(' [x] Sent user creation')
 
 connection.close()
-

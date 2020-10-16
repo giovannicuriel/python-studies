@@ -1,13 +1,25 @@
+"""Registration processor default structures"""
+
 from collections import namedtuple
 from time import monotonic as time
 import requests
 import pika
-from registration_processor.services import build_legacy_service
-from registration_processor.utils import build_message_receiver, TaskExecutor, Task
-from registration_processor.processor import build_registration_processor
+from .services import build_legacy_service
+from .utils import build_message_receiver, TaskExecutor, Task
+from .processor import build_processor
 
-task_executor = TaskExecutor()
-services = build_legacy_service(requests)('http://localhost:3000/registration')
-receiver = build_message_receiver(pika)('localhost', 'user-registrations', 'fanout')
-__registration_processor = build_registration_processor(services, task_executor)()
-receiver.register_callback(lambda message: __registration_processor.process_message(message))
+
+def build_registration_processor():
+    """Build registration processor default strucutures"""
+    task_executor = TaskExecutor()
+    services = build_legacy_service(requests)(
+        'http://localhost:3000/registration')
+    receiver = build_message_receiver(pika)(
+        'localhost', 'user-registrations', 'fanout')
+    __registration_processor = build_processor(
+        services, task_executor)()
+    receiver.register_callback(__registration_processor.process_message)
+
+    RegistrationProcessor = namedtuple('RegistrationProcessor', [
+                                       'task_executor', 'receiver'])
+    return RegistrationProcessor(task_executor=task_executor, receiver=receiver)
