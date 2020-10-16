@@ -1,7 +1,7 @@
 import json
-def build_message_receiver(pika, host, exchange, exchange_type):
+def build_message_receiver(pika):
   class Receiver:
-    def __init__(self):
+    def __init__(self, host, exchange, exchange_type):
       self.__connection = pika.BlockingConnection(pika.ConnectionParameters(
         host=host
       ))
