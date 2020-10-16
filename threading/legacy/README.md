@@ -1,24 +1,28 @@
-# Servidor legado
+# Legacy server
 
-Este componente representa o servidor legado com uma camada intermediária que
-implementa uma API HTTP.
+This component represents the legacy service with an intermediary layer that
+implements a HTTP REST API.
 
-Ele é um servidor de exemplo que recebe uma requisição para a criação de um
-usuário e, toda vez que ele recebe uma requisição para verificação se o
-processamento do usuário está pronto, ele verifica se já se passou um
-determinado tempo e, em caso afirmativo, uma decisão é tomada sobre o sucesso
-do cadastro ou não. A chance de dar certo é 50%.
+It is a simple server that receives a user registration request and, each time
+it receives a GET request asking for status of such registration, the server
+will check whether enough time has passed. If so, it will generate a rnadom
+result (ok or error).
 
-## Como executar
+## How to run
 
-O Flask já deve estar instalado no seu ambiente virtual, se você já tiver
-executado o `pipenv install`. Neste caso, basta iniciar a aplicação:
+If you followed the other README.md files (particularly the one at the root
+of this repository), you should already have Flask installed. If not, just
+execute `pipenv install` to install all necessary modules (Flask included).
+Remember that you need to execute this command at this repositories' root folder
+(check whether file `Pipfile` is present).
+
+After installing everything, just start this application:
 
 ```bash
 python3 ./app.py
 ```
 
-Caso tudo esteja correto, o log inicial do flask deve aparecer no console:
+If everything is fine, Flask initial log should appear:
 
 ```text
  * Serving Flask app "legacy-server" (lazy loading)
@@ -29,24 +33,13 @@ Caso tudo esteja correto, o log inicial do flask deve aparecer no console:
  * Running on http://localhost:3000/ (Press CTRL+C to quit)
 ```
 
-Pronto! Servidor de pé, vamos enviar algumas requisições:
+Cool! Server is up, let's poke it with some sample requests:
 
 ```bash
-$ curl 0:3000/registration -H 'content-type:application/json' -d '{"name": "José da Silva", "age": 30}' -X POST
+$ curl 0:3000/registration -H 'content-type:application/json' -d '{"name": "John Doe", "age": 30}' -X POST
 {"message":"ok","userid":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}
 $ curl 0:3000/registration/17b0030e-9fd8-406a-98ca-0cd5e21c4348
-{"message":"ok","user":{"age":30,"name":"Jos\u00e9 da Silva","process_status":"not-ready","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
+{"message":"ok","user":{"age":30,"name":"John Doe","process_status":"not-ready","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
 $ curl 0:3000/registration/17b0030e-9fd8-406a-98ca-0cd5e21c4348
-{"message":"ok","user":{"age":30,"name":"Jos\u00e9 da Silva","process_status":"ok","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
+{"message":"ok","user":{"age":30,"name":"John Doe","process_status":"ok","user_id":"17b0030e-9fd8-406a-98ca-0cd5e21c4348"}}
 ```
-
-## Experimento: injeção de dependências
-
-Decidi, para a implementação deste serviço, usar uma abordagem que venho
-empregando nos componentes que ando desenvolvendo em NodeJS. Eu defino métodos
-de construção de classes os quais recebem a lista de dependências. As classes
-geradas vão construir objetos que utilizam estas dependências, por conta do
-contexto onde foram criadas. Assim é possível se criar os controladores,
-roteadores e repositórios de forma imutável, ou seja, uma vez definidas as
-dependências e o seu comportamento, não é possível alterá-las em tempo de
-execução (ou pelo menos não é esta a intenção).
